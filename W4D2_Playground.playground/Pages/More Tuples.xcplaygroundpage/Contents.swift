@@ -9,7 +9,7 @@ import Foundation
 /*:
  Imagine we are rolling two six-sided dice. We can use a tuple to represent each of the dice values.
  */
-let diceRoll = (5, 6)
+let diceRoll = (5, 1)
 
 // Our switch statement looks for the cases where the total value of the dice rolled is 11
 switch diceRoll {
@@ -17,6 +17,8 @@ case (5, 6):
   print("We got 11!")
 case (6, 5):
   print("We got 11!")
+case (_, 1):
+    print("we got 1 on the second roll")
 default:
   print("This roll doesn't matter to us")
 }
@@ -40,6 +42,22 @@ default:
  - Halloween Day - Oct 31
  - Otherwise, indiciate the given day is not a holiday
  */
+
+
+func printHoliday(month: String, day: Int) -> Void {
+    switch (month, day) {
+    case (_, 25):
+        print("Christmas")
+    case (_, 1):
+        print("New Years")
+    case (_, 14):
+        print("Valentines")
+    case (_, 31):
+        print("Halloween")
+    default:
+        print()
+    }
+}
 
 
 /*:
