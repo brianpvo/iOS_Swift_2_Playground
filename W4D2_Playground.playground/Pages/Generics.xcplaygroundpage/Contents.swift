@@ -40,8 +40,8 @@ printMyTwoNumbers(num1: "three", num2: "four")
  You might have run into error in the console regarding the multiplication operator can only be applied to numbered parameters. This makes sense as multiplying two Strings together doesn't make sense. So, we want to only take in variable types that *can* use the multiplication operator. In this case, we can limit the element type to types that conform to the `Numeric` protocol like below.
  */
 
-func multiply<Element: Numeric>(num1: Element, num2: Element) {
-  
+func multiply<Element: Numeric>(num1: Element, num2: Element) -> Element{
+    return num1 * num2
 }
 
 
@@ -50,6 +50,8 @@ func multiply<Element: Numeric>(num1: Element, num2: Element) {
  Update your multiplication function and test it! Try using different variable types to see what works and what doesn't.
  */
 
+multiply(num1: 1, num2: 1)
+multiply(num1: 2.0, num2: 2.1)
 
 /*:
  - Experiment:
@@ -60,7 +62,11 @@ func multiply<Element: Numeric>(num1: Element, num2: Element) {
  For this experiment, refrain from using the array method `indexOf`. Also the protocol `Equatable` might be useful here. Search it up to see what it's about.
  */
 
+func findIndex(array: [Int], element: Int) -> Int {
+    return array.index(of: element)!
+}
 
+findIndex(array: [1,2,3,4,5], element: 2)
 
 /*:
  - Callout(Challenge):
@@ -74,6 +80,17 @@ func multiply<Element: Numeric>(num1: Element, num2: Element) {
  - enqueue: add an item to the queue
  - dequeue: remove an item from the queue, and return the removed element
  */
+
+struct Queue {
+    var queueArray = [Any]()
+    mutating func add(stuff: Any) {
+        queueArray.append(stuff)
+    }
+    
+    mutating func removeLast() {
+        queueArray.removeLast()
+    }
+}
 
 
 
