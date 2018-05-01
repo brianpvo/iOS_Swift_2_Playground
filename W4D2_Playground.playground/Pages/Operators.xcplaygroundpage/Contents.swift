@@ -46,6 +46,17 @@ let combinedValues = "abc" + 123
  Use the '*' operator to multiply a String and an Int. This returns a new String and repeats the given String the number of times delcared by the Int. ie: "abc" * 3 = "abcabcabc"
  */
 
+func * (left: String, right: Int) -> String {
+    var multiply: String = ""
+    
+    for _ in 0..<right {
+        multiply += "\(left)"
+    }
+    
+    return multiply
+}
+
+let multiplyValues = "abc" * 3
 
 /*:
  - Experiment:
@@ -87,7 +98,13 @@ var incrementTwo = incrementOne+++
  Create your own custom operator using the square root symbol here: √
  */
 
+prefix operator √
+prefix func √ (number: Double) -> Double {
+    return sqrt(number)
+}
 
+var numSquared: Double = 4.0
+√numSquared
 /*:
  ### Swift Operators Guidelines
  - Don't create an operator unless its meaning is obvious
@@ -100,6 +117,13 @@ var incrementTwo = incrementOne+++
  When we have percentage values, we tend to convert them into their decimal form before doing any arithmetic to them. Create an operator with the '%' that will be a convenient operator to convert Int values into a usable percentage value. ie: 10% = 0.1
  */
 
+postfix operator %
+postfix func % (number: Int) -> Double {
+    let doubleNum: Double = Double(number / 100)
+    return doubleNum
+}
+
+105%
 
 /*:
  - Callout(Challenge):
@@ -108,6 +132,12 @@ var incrementTwo = incrementOne+++
  For example, [1,2] + [3,4] = [4,6]. If the array count size are not the same, then return nil
  */
 
+func + (leftArray: [Int], rightArray: [Int]) -> [Int] {
+    let zipped = zip(leftArray, rightArray).map(+)
+    return zipped
+}
+
+[1,2] + [3,4]
 
 
 //: [Next](@next)
